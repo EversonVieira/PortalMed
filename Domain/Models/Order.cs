@@ -12,15 +12,14 @@ namespace Domain.Models
         [Key]
         public int Id { get; set; }
         public int UserId { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
         public DateTime PurchaseDate { get; set; }
-
+        public virtual ICollection<Product> Products { get; set; }
       
         public bool IsValid()
         {
             bool isValid = true;
 
-            if (UserId > 0)
+            if (UserId is <= 0)
                 isValid = false;
 
             return isValid;

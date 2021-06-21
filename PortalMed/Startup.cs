@@ -39,6 +39,7 @@ namespace PortalMed
 
             services.AddScoped<UserRule>();
             services.AddScoped<ProductRule>();
+            services.AddScoped<OrderRule>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

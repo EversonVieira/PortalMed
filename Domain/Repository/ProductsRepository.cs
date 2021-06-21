@@ -25,8 +25,6 @@ namespace Domain.Repository
             {
                 var response = await appDbContext.Products.AddAsync(product);
 
-                appDbContext.Entry(product).State = EntityState.Modified;
-
                 await appDbContext.SaveChangesAsync();
 
                 await Task.CompletedTask;
@@ -107,7 +105,7 @@ namespace Domain.Repository
 
                 return response;
             }
-            catch
+            catch(Exception ex)
             {
                 return new Response<List<Product>>
                 {
@@ -126,7 +124,7 @@ namespace Domain.Repository
                 return x => true;
             }
             Func<Product, bool> predicate = x => (string.IsNullOrWhiteSpace(filter.Name) || x.Name.ToLower().Contains(filter.Name.ToLower())) &&
-                        (string.IsNullOrWhiteSpace(filter.Description) || x.Description.ToLower().Equals(filter.Description.ToLower())) &&
+                        (string.IsNullOrWhiteSpace(filter.Description) || x.Description.ToLower().Contains(filter.Description.ToLower())) &&
                         ((filter.StartDate == DateTime.MinValue || filter.EndDate == DateTime.MinValue) || (x.CreationDate >= filter.StartDate && x.CreationDate <= filter.EndDate));
             return predicate;
         }

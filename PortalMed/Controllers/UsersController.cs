@@ -16,11 +16,11 @@ namespace PortalMed.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         public UserRule _Rule;
 
-        public UserController(UserRule _Rule)
+        public UsersController(UserRule _Rule)
         {
             this._Rule = _Rule;
         }
@@ -42,7 +42,7 @@ namespace PortalMed.Controllers
             }
         }
 
-        [HttpGet("users/{userName},{displayName},{startDate},{endDate},{email},{sortMethod}")]
+        [HttpGet("{userName},{displayName},{startDate},{endDate},{email},{sortMethod}")]
         public async Task<Response<List<User>>> GetAll(string userName = "",
                                                        string displayName = "",
                                                        DateTime startDate = new DateTime(),

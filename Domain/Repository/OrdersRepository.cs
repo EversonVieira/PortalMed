@@ -25,8 +25,6 @@ namespace Domain.Repository
             {
                 var response = await appDbContext.Orders.AddAsync(order);
 
-                appDbContext.Entry(order).State = EntityState.Modified;
-
                 await appDbContext.SaveChangesAsync();
 
                 await Task.CompletedTask;
@@ -38,7 +36,7 @@ namespace Domain.Repository
                     Errors = null
                 };
             }
-            catch
+            catch(Exception ex)
             {
                 return new Response<bool>
                 {
