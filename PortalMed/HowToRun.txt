@@ -1,0 +1,10 @@
+1- Go to PortalMed and open PortalMed.sln.
+2- Change the appsettings.json DefaultConnection IP to your IP.
+3- Run Update-Database on PMC (Package Manager Console) pointing to DOMAIN project.
+4- Test the EndPoints and be happy.
+
+Note: i'm note sure about how i should send you my Docker Image. So, if you want to see it, just ask me for e-mail i will run to send you that.
+
+I appreciate your time, best regards.
+
+Everson Vieira.
